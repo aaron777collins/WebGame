@@ -12,15 +12,6 @@ document.body.appendChild(renderer.domElement)
 
 const controls = new OrbitControls(camera, renderer.domElement)
 
-const geometry = new THREE.BoxGeometry()
-const material = new THREE.MeshBasicMaterial({
-    color: 0x00ff00,
-    wireframe: true,
-})
-
-const cube = new THREE.Mesh(geometry, material)
-scene.add(cube)
-
 window.addEventListener('resize', onWindowResize, false)
 function onWindowResize() {
     camera.aspect = window.innerWidth / window.innerHeight
@@ -32,9 +23,6 @@ function onWindowResize() {
 function animate() {
     requestAnimationFrame(animate)
 
-    cube.rotation.x += 0.01
-    cube.rotation.y += 0.01
-
     controls.update()
 
     render()
@@ -43,4 +31,16 @@ function animate() {
 function render() {
     renderer.render(scene, camera)
 }
-animate()
+
+window.addEventListener("DOMContentLoaded", () => {
+
+    // creating water scene
+
+    const waterGeometry = new THREE.PlaneGeometry(100, 100, 100, 100)
+    const waterMaterial = new THREE.MeshBasicMaterial({ color: 0x0000ff, wireframe: true })
+    const water = new THREE.Mesh(waterGeometry, waterMaterial)
+    water.rotation.x = -Math.PI / 2
+    scene.add(water)
+
+    animate()
+});
