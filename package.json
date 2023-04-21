@@ -9,6 +9,7 @@
     "@yushijinhun/three-minifier-webpack": "^0.3.0",
     "clean-webpack-plugin": "^4.0.0",
     "copy-webpack-plugin": "^9.1.0",
+    "gh-pages": "^5.0.0",
     "html-webpack-plugin": "^5.5.0",
     "raw-loader": "^4.0.2",
     "ts-loader": "^9.2.5",
@@ -21,6 +22,7 @@
   },
   "scripts": {
     "start": "webpack serve --config ./webpack.dev.js",
-    "build": "webpack --config ./webpack.prod.js"
+    "build": "webpack --config ./webpack.prod.js",
+    "deploy": "gh-pages -d dist"
   }
 }
